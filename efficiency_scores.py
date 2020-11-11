@@ -20,13 +20,16 @@ class effScores:
 
 
     def __del__(self):
-        del self.treeTk
-        del self.atreeTk
-        del self.ytreeTk
-        del self.x
-        del self.y
-        del self.nX
-        del self.nY
+        try:
+            del self.treeTk
+            del self.atreeTk
+            del self.ytreeTk
+            del self.x
+            del self.y
+            del self.nX
+            del self.nY
+        except Exception:
+            pass
 
     # =============================================================================
     # Functions to prepare the data structure
