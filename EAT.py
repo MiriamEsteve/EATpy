@@ -33,19 +33,22 @@ class EAT(deepEAT):
 
     'Destructor'
     def __del__(self):
-        # Remove parameters
-        del self.BestTivs
-        del self.SE
-        del self.TAiv
-        del self.leaves
-        del self.t
-        del self.N
-        #del self.matrix
-        del self.Lv
-        del self.notLv
-        del self.Tk
-        del self.tree_alpha_list
-        del self.td_tree_alpha_list
+        try:
+            # Remove parameters
+            del self.BestTivs
+            del self.SE
+            del self.TAiv
+            del self.leaves
+            del self.t
+            del self.N
+            #del self.matrix
+            del self.Lv
+            del self.notLv
+            del self.Tk
+            del self.tree_alpha_list
+            del self.td_tree_alpha_list
+        except Exception:
+            pass
 
     #Function that build EAT tree
     def fit(self):
