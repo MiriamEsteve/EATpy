@@ -111,8 +111,8 @@ class effScores:
 
     def fit(self):
         for i in range(len(self.matrix)):
-            self.matrix.loc[i, "Efficiency"] = self._cplex_fi(self.matrix.loc[i, self.x].to_list(),\
-                                                         self.matrix.loc[i, self.matrix.columns[self.y]].to_list())
+            self.matrix.loc[i, "Efficiency"] = round(self._cplex_fi(self.matrix.loc[i, self.x].to_list(),\
+                                                         self.matrix.loc[i, self.matrix.columns[self.y]].to_list()), 4)
 
         self.__del__()
 
