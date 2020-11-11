@@ -111,7 +111,7 @@ class effScores:
 
     def fit(self):
         for i in range(len(self.matrix)):
-            self.matrix.loc[i, "ScoreEAT"] = self._cplex_fi(self.matrix.loc[i, self.x].to_list(),\
+            self.matrix.loc[i, "Efficiency"] = self._cplex_fi(self.matrix.loc[i, self.x].to_list(),\
                                                          self.matrix.loc[i, self.matrix.columns[self.y]].to_list())
 
         self.__del__()
@@ -168,7 +168,7 @@ class effScores:
 
     def fit_FDH(self):
         for i in range(len(self.matrix)):
-            self.matrix.loc[i, "ScoreFDH"] = self._fi_FDH(self.matrix.loc[i, self.x].to_list(),
+            self.matrix.loc[i, "Efficiency_FDH"] = self._fi_FDH(self.matrix.loc[i, self.x].to_list(),
                                                           self.matrix.loc[i, self.matrix.columns[self.y]].to_list())
         self.__del__()
 
