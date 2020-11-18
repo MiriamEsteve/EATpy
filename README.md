@@ -39,3 +39,12 @@ Third, the creation and fit of the EAT model are done.
 model = fEAT.EAT(dataset, x, y, numStop, fold)
 model.fit()
 ```
+
+<h2>Draw tree EAT</h2>
+The drawing of the EAT tree is done using the external graphviz library. For this purpose, the first instruction generates the dot_data that graphviz needs to draw the EAT tree. In addition, it saves it as an image in the working directory. 
+
+```python
+dot_data = model.export_graphviz('EAT')
+graph = graphviz.Source(dot_data, filename="tree", format="png")
+graph.view()
+```
