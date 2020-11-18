@@ -5,7 +5,8 @@
 For more info see: https://doi.org/10.1016/j.eswa.2020.113783
 
 <h2>Generate simulated data </h2>
-EATpy repository includes a simulated data generator module. It is used as an example of the use of the repository. First, we stablish the seed of the generator, the size of the sample, 
+EATpy repository includes a simulated data generator module. It is used as an example of the use of the repository. First, we stablish the seed of the generator and the size of the sample.
+
 ```python
-dataset = data.Data(50).data
+dataset = data.Data(1, 50).data
 ```
