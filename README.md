@@ -15,7 +15,7 @@ import graphviz
 ```
 
 <h2>Generate simulated data </h2>
-EATpy repository includes a simulated data generator module. It is used as an example of the use of the repository. For do that, the seed of the generator and the size of the sample are stablished. 
+EATpy repository includes a simulated data generator module. It is used as an example of the use of the repository. For do that, the seed of the generator and the size of the dataset are stablished. 
 
 ```python
 dataset = data.Data(1, 50).data
@@ -23,7 +23,7 @@ dataset = data.Data(1, 50).data
 <h2>Create the EAT model</h2>
 The creation of the EAT model consist on specify the inputs and outputs columns name, the ending rule and the number of folder for Cross-Validation process. Once this is done, the model is created and fitted to build it.
 
-First, the name of the columns of the inputs and outputs in the sample are indicated.
+First, the name of the columns of the inputs and outputs in the dataset are indicated. If this ones don't exist in the dataset, the EAT model returns an error. 
 ```python
 x = ["x1", "x2"]
 y = ["y1", "y2"]
@@ -47,4 +47,12 @@ The drawing of the EAT tree is done using the external graphviz library. For thi
 dot_data = model.export_graphviz('EAT')
 graph = graphviz.Source(dot_data, filename="tree", format="png")
 graph.view()
+```
+
+<h2>Predictions</h2>
+The prediction of the EAT model can be with one dataset or with a single register of the dataset. To do this, you need the data set or single register you want to predict and the names of the input columns. In order to indicate the names of the inputs in the dataset to be predicted. As a general rule, these names will be the same as those in the initial dataset.
+```python
+x_p = ["x1", "x2"]
+data_pred = dataset.loc[:10, x_p]
+data_prediction = model.predict(data_pred, x_p)
 ```
