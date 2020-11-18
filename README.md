@@ -6,6 +6,7 @@ For more info see: https://doi.org/10.1016/j.eswa.2020.113783
 
 <h2>Import libreries</h2>
 All the libraries in the repository are imported since they will be used in all the examples presented.
+
 ```python
 import data
 import EAT as fEAT
