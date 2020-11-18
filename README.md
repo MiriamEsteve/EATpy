@@ -5,21 +5,27 @@
 For more info see: https://doi.org/10.1016/j.eswa.2020.113783
 
 <h2>Generate simulated data </h2>
-EATpy repository includes a simulated data generator module. It is used as an example of the use of the repository. 
-First, the seed of the generator and the size of the sample are stablished. 
+EATpy repository includes a simulated data generator module. It is used as an example of the use of the repository. For do that, the seed of the generator and the size of the sample are stablished. 
 
 ```python
 dataset = data.Data(1, 50).data
 ```
+<h2>Create the EAT model</h2>
+The creation of the EAT model consist on specify the inputs and outputs columns name, the ending rule and the number of folder for Cross-Validation process. Once this is done, the model is created and fitted to build it.
 
-Second, the name of the columns of the inputs and outputs in the sample are indicated.
+First, the name of the columns of the inputs and outputs in the sample are indicated.
 ```python
 x = ["x1", "x2"]
 y = ["y1", "y2"]
 ```
 
-Third, the ending rule and the number of fold in Cross-Validation process are specified.
+Second, the ending rule and the number of fold in Cross-Validation process are specified.
 ```python
 numStop = 5
 fold = 5
+```
+Third, the creation and fit of the EAT model are done.
+```python
+model = fEAT.EAT(dataset, x, y, numStop, fold)
+model.fit()
 ```
