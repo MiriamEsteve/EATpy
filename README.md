@@ -4,6 +4,15 @@
 
 For more info see: https://doi.org/10.1016/j.eswa.2020.113783
 
+<h2>Import libreries</h2>
+All the libraries in the repository are imported since they will be used in all the examples presented.
+```python
+import data
+import EAT as fEAT
+import scores
+import graphviz
+```
+
 <h2>Generate simulated data </h2>
 EATpy repository includes a simulated data generator module. It is used as an example of the use of the repository. For do that, the seed of the generator and the size of the sample are stablished. 
 
