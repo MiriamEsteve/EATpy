@@ -4,7 +4,7 @@
 
 For more info see: https://doi.org/10.1016/j.eswa.2020.113783
 
-<h2>Import libreries</h2>
+<h2>Import libraries</h2>
 All the libraries in the repository are imported since they will be used in all the examples presented.
 
 ```python
@@ -60,4 +60,22 @@ data_pred = dataset.loc[:10, x_p]
 data_prediction = model.predict(data_pred, x_p)
 ```
 
+<h2>Efficiency Scores</h2>
+The repository has three ways to calculate the efficiency score of EAT model. The first one is the model BBC output oriented. The second one is the model BBC input oriented. The last one is the model DDF. 
 
+To do that, the model EAT of scores is carried out.
+```python
+mdl_scores = scores.scores(dataset, x, y, model.tree)
+```
+
+Then, the three models exposed before are called.
+```python
+#Fit BBC output oriented of EAT
+mdl_scores.BBC_output_EAT()
+
+#Fit BBC input oriented of EAT
+mdl_scores.BBC_input_EAT()
+
+#Fit DDF of EAT
+mdl_scores.DDF_EAT()
+```
