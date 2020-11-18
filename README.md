@@ -5,8 +5,21 @@
 For more info see: https://doi.org/10.1016/j.eswa.2020.113783
 
 <h2>Generate simulated data </h2>
-EATpy repository includes a simulated data generator module. It is used as an example of the use of the repository. First, we stablish the seed of the generator and the size of the sample.
+EATpy repository includes a simulated data generator module. It is used as an example of the use of the repository. 
+First, the seed of the generator and the size of the sample are stablished. 
 
 ```python
 dataset = data.Data(1, 50).data
+```
+
+Second, the name of the columns of the inputs and outputs in the sample are indicated.
+```python
+x = ["x1", "x2"]
+y = ["y1", "y2"]
+```
+
+Third, the ending rule and the number of fold in Cross-Validation process are specified.
+```python
+numStop = 5
+fold = 5
 ```
