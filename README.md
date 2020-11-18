@@ -23,7 +23,7 @@ dataset = data.Data(1, 50).data
 <h2>Create the EAT model</h2>
 The creation of the EAT model consist on specify the inputs and outputs columns name, the ending rule and the number of folder for Cross-Validation process. Once this is done, the model is created and fitted to build it.
 
-First, the name of the columns of the inputs and outputs in the dataset are indicated. If this ones don't exist in the dataset, the EAT model returns an error. 
+First, the name of the columns of the inputs and outputs in the dataset are indicated. If these ones don't exist in the dataset, the EAT model returns an error. 
 ```python
 x = ["x1", "x2"]
 y = ["y1", "y2"]
@@ -51,8 +51,13 @@ graph.view()
 
 <h2>Predictions</h2>
 The prediction of the EAT model can be with one dataset or with a single register of the dataset. To do this, you need the data set or single register you want to predict and the names of the input columns. In order to indicate the names of the inputs in the dataset to be predicted. As a general rule, these names will be the same as those in the initial dataset.
+
+In this example, the first 10 register are selected from the initial dataset and the name of the inputs are the same as it. Then, the model EAT realize the prediction and return the dataset with the predictions. These ones are named by "p_" at the beginning of the output name.
+
 ```python
 x_p = ["x1", "x2"]
 data_pred = dataset.loc[:10, x_p]
 data_prediction = model.predict(data_pred, x_p)
 ```
+
+
