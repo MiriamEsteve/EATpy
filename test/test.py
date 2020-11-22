@@ -1,11 +1,8 @@
-import data
-import data2
-import EAT as fEAT
-import scores
+import eat
 import graphviz
 
 #Generate simulate data (seed, N, nX, nY, %DMU in frontier, noise
-dataset = data.Data(1, 50).data
+dataset = eat.Data(1, 50).data
 #dataset = eat.Data2(50, 9).data
 
 x = ["x1", "x2"]
@@ -15,7 +12,7 @@ numStop = 5
 fold = 5
 
 #Create model
-model = fEAT.EAT(dataset, x, y, numStop, fold)
+model = eat.EAT(dataset, x, y, numStop, fold)
 #Fit model
 model.fit()
 
@@ -32,7 +29,7 @@ data_prediction  #show "p" predictions
 
 
 #Create model of Efficiency Scores
-mdl_scores = scores.scores(dataset, x, y, model.tree)
+mdl_scores = eat.scores(dataset, x, y, model.tree)
 
 #Fit BBC output oriented of EAT
 mdl_scores.BBC_output_EAT()

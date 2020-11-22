@@ -4,7 +4,7 @@ INF = math.inf
 from docplex.mp.model import Model
 
 
-class scores:
+class Scores:
     def __init__(self, matrix, x, y, tree):
         self.matrix = matrix
         self.N = len(self.matrix)

@@ -2,7 +2,7 @@ import sys
 import pandas as pd
 import math
 INF = math.inf
-from deep_EAT import deepEAT
+from eat.deep_EAT import deepEAT
 
 class style():
     BLACK = '\033[30m'
