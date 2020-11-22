@@ -30,7 +30,7 @@ class Scores:
     def __init__(self, matrix, x, y, tree):
         self.matrix = matrix
         self.N = len(self.matrix)
-        self._check_columnsX_in_data(matrix, x, y)
+        self._check_columnsX_in_data(matrix, x)
 
         self.x = matrix.columns.get_indexer(x).tolist()  # Index var.ind in matrix
         self.y = matrix.columns.get_indexer(y).tolist()  # Index var. obj in matrix
