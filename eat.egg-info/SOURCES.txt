@@ -1,0 +1,13 @@
+setup.py
+eat/EAT.py
+eat/data.py
+eat/data2.py
+eat/deep_EAT.py
+eat/scores.py
+eat.egg-info/PKG-INFO
+eat.egg-info/SOURCES.txt
+eat.egg-info/dependency_links.txt
+eat.egg-info/not-zip-safe
+eat.egg-info/requires.txt
+eat.egg-info/top_level.txt
+test/test.py
