@@ -8,9 +8,7 @@ For more info see: https://doi.org/10.1016/j.eswa.2020.113783
 All the libraries in the repository are imported since they will be used in all the examples presented.
 
 ```python
-import data
-import EAT as fEAT
-import scores
+import eat
 import graphviz
 ```
 
@@ -18,7 +16,7 @@ import graphviz
 EATpy repository includes a simulated data generator module. It is used as an example of the use of the repository. For do that, the seed of the generator and the size of the dataset are stablished. 
 
 ```python
-dataset = data.Data(1, 50).data
+dataset = eat.Data(1, 50).data
 ```
 <h2>Create the EAT model</h2>
 The creation of the EAT model consist on specify the inputs and outputs columns name, the ending rule and the number of folder for Cross-Validation process. Once this is done, the model is created and fitted to build it.
@@ -36,7 +34,7 @@ fold = 5
 ```
 Third, the creation and fit of the EAT model are done.
 ```python
-model = fEAT.EAT(dataset, x, y, numStop, fold)
+model = eat.EAT(dataset, x, y, numStop, fold)
 model.fit()
 ```
 
@@ -65,7 +63,7 @@ The repository has three ways to calculate the efficiency score of EAT model. Th
 
 To do that, the model EAT of scores is carried out.
 ```python
-mdl_scores = scores.scores(dataset, x, y, model.tree)
+mdl_scores = eat.Scores(dataset, x, y, model.tree)
 ```
 
 Then, the three models exposed before are called.
