@@ -28,7 +28,7 @@ data_prediction  #show "p" predictions
 
 
 #Create model of Efficiency Scores
-mdl_scores = eat.scores(dataset, x, y, model.tree)
+mdl_scores = eat.Scores(dataset, x, y, model.tree)
 
 #Fit BBC output oriented of EAT
 mdl_scores.BBC_output_EAT()
