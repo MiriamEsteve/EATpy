@@ -3,6 +3,28 @@ import math
 INF = math.inf
 from docplex.mp.model import Model
 
+class style():
+    BLACK = '\033[30m'
+    RED = '\033[31m'
+    GREEN = '\033[32m'
+    YELLOW = '\033[33m'
+    BLUE = '\033[34m'
+    MAGENTA = '\033[35m'
+    CYAN = '\033[36m'
+    WHITE = '\033[37m'
+    UNDERLINE = '\033[4m'
+    RESET = '\033[0m'
+
+class EXIT(Exception):
+    def __init__(self, *args):
+        if args:
+            self.message = args[0]
+        else:
+            self.message = None
+
+    def __str__(self):
+        if self.message:
+            return style.YELLOW + "\n\n" + self.message + style.RESET
 
 class Scores:
     def __init__(self, matrix, x, y, tree):
@@ -29,6 +51,12 @@ class Scores:
         del self.atreeTk
         del self.ytreeTk
         del self.N_leaves
+
+    def _check_columnsX_in_data(self, matrix, x):
+        cols = x
+        for col in cols:
+            if col not in matrix.columns.tolist():
+                raise EXIT("ERROR. The names of the inputs are not in the dataset")
 
     def _prepare_a(self, a_y_treeTk, name):
         a = pd.DataFrame.from_records(a_y_treeTk)
