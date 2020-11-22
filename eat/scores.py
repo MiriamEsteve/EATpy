@@ -32,7 +32,7 @@ class Scores:
         self.N = len(self.matrix)
         self._check_columnsX_in_data(matrix, x)
 
-        self.x = matrix.columns.get_indexer(x).tolist()  # Index var.ind in matrix
+        self.x = x  # Index var.ind in matrix
         self.y = matrix.columns.get_indexer(y).tolist()  # Index var. obj in matrix
 
         self.nX = len(self.x)
