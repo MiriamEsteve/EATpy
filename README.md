@@ -6,14 +6,14 @@ For more info see: https://doi.org/10.1016/j.eswa.2020.113783
 
 <h2>Installation</h2>
 To facilitate installation on a personal computer, we recommend installing git (see: https://git-scm.com/downloads) and the Anaconda distribution (see: https://www.anaconda.com/products/individual). The steps to follow are based on these two installations.
+<br>
 
-
-Step1. Open the Anaconda Prompt console, place it in the desired directory for installation and enter the instruction: 
+<b>Step1</b>. Open the Anaconda Prompt console, place it in the desired directory for installation and enter the instruction: 
 ```
 git clone https://github.com/MiriamEsteve/EATpy.git
 ```
 
-Step 2. Place us in the folder created by EATpy, using EATpy cd, and execute the instruction:
+<b>Step 2</b>. Place us in the folder created by EATpy, using EATpy cd, and execute the instruction:
 ```
 python setup.py install
 ```
