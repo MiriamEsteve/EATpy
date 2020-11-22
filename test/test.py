@@ -3,7 +3,6 @@ import graphviz
 
 #Generate simulate data (seed, N, nX, nY, %DMU in frontier, noise
 dataset = eat.Data(1, 50).data
-#dataset = eat.Data2(50, 9).data
 
 x = ["x1", "x2"]
 y = ["y1", "y2"]
