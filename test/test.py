@@ -1,7 +1,7 @@
 import eat
 import graphviz
 
-#Generate simulate data (seed, N, nX, nY, %DMU in frontier, noise
+#Generate simulated data (seed, N)
 dataset = eat.Data(1, 50).data
 
 x = ["x1", "x2"]
