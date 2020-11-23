@@ -16,6 +16,29 @@ git clone https://github.com/MiriamEsteve/EATpy.git
 ```
 python setup.py install
 ```
+<p>By following these two simple steps we will have the EATpy package installed on our computer. The examples included below are also available in the EATpy/test folder that has been created in the installation.</p>
+
+<h2>Read Data sets</h2>
+<p>The input data set that requires all the functionalities that will be explained later in this section must meet the condition of being a DataFrame data type from the pandas library. For this purpose, the user can start from an Excel document in which there are as many columns as inputs and as many columns as outputs. In all of them a header with their names must be included, because it will be necessary to introduce them in the EATpy package. The user can also start from a CSV file in which the specification of the data headers will be necessary.</p>
+
+<p>Once the type of file chosen complies with the indicated structure, it must be converted to DataFrame type from the pandas library. The instructions are:</p>
+
+- Import the pandas library
+```python
+import pandas as pd
+```
+
+- Reading and converting an Excel document
+```python
+dataset = pd.read_excel("file_name.xlsx", sheet_name = "data")
+```
+
+- Reading and converting a CSV file
+```python
+dataset = pd.read_csv("file_name.csv", sep = ";")
+```
+
+<p>Once these steps have been completed, you can start using the EATpy library.</p>
 
 <h2>Import libraries</h2>
 <p>All the libraries in the repository are imported since they will be used in all the examples presented.</p>
