@@ -129,7 +129,7 @@ dataset = pd.read_excel("PISA.xlsx", sheet_name = "data")
 x = ["SCMATEDU", "ESCS", "PRFAL100"]
 y = ["PVMATH", "PVREAD, "PVSCIE"]
 
-#Establec Set the stop rule and the number of folds for cross validation
+#Set the stop rule and the number of folds for cross validation
 numStop = 5
 fold = 5
 
