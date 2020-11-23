@@ -113,3 +113,46 @@ mdl_scores.BBC_input_EAT()
 #Fit DDF of EAT
 mdl_scores.DDF_EAT()
 ```
+
+<h2>Analysis of the PISA data set</h2>
+<p>A empirical example of the full operation of the EATpy package is detailed below. The data set used is that of PISA, located in the EATpy/data set folder. It can also be downloaded from https://github.com/MiriamEsteve/EATpy/tree/main/data%20set.</p>
+
+```python
+import pandas
+import eat
+import graphviz
+
+#Read the data set
+dataset = pd.read_excel("PISA.xlsx", sheet_name = "data")
+
+#Set the names of the input and output columns
+x = ["SCMATEDU", "ESCS", "PRFAL100"]
+y = ["PVMATH", "PVREAD, "PVSCIE"]
+
+#Establec Set the stop rule and the number of folds for cross validation
+numStop = 5
+fold = 5
+
+#Adjust and create the EAT model
+model = eat.EAT(dataset, x, y, numStop, fold)
+model.fit()
+
+
+#Drawing the EAT tree
+dot_data = model.export_graphviz('EAT')
+graph = graphviz.Source(dot_data, filename="tree", format="png")
+graph.view()
+
+
+#Adjust and model the efficiency calculations of the EAT
+mdl_scores = eat.Scores(dataset, x, y, model.tree)
+
+#Calculate BBC output oriented EAT
+mdl_scores.BBC_output_EAT()
+
+#Calculate BBC input-oriented EAT
+mdl_scores.BBC_input_EAT()
+
+#Calculate the FDD of the TAS
+mdl_scores.DDF_EAT()
+```
