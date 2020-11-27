@@ -115,13 +115,16 @@ mdl_scores.DDF_EAT()
 ```
 
 <p>In addition, the model of BCC output oriented of FDH and its DDF model are included.</p>
+
 ```python
 #Fit BBC output oriented of FDH
 mdl_scores.BBC_output_FDH()
 #Fit DDF of FDH
 mdl_scores.DDF_FDH()
 ```
+
 <p>Also, this two models are calculated of DEA.</p>
+
 ```python
 #Fit BBC output oriented of DEA
 mdl_scores.BBC_output_DEA()
