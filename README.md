@@ -94,24 +94,39 @@ data_prediction = model.predict(data_pred, x_p)
 ```
 
 <h2>Efficiency Scores</h2>
-<p>The repository has three ways to calculate the efficiency score of EAT model. The first one is the model BBC output oriented. The second one is the model BBC input oriented. The last one is the model DDF.</p>
+<p>The repository has four ways to calculate the efficiency score of EAT model. The first one is the model BBC output oriented. The second one is the model BBC output oriented of DEAEAT. The third one is the model BBC input oriented. The last one is the model DDF.</p>
 <p>To do that, the model EAT of scores is carried out.</p>
 
 ```python
 mdl_scores = eat.Scores(dataset, x, y, model.tree)
 ```
 
-<p>Then, the three models exposed before are called.</p>
+<p>Then, the four models exposed before are called.</p>
 
 ```python
 #Fit BBC output oriented of EAT
 mdl_scores.BBC_output_EAT()
-
+#Fit BBC output oriented of DEAEAT
+mdl_scores.BBC_output_DEAEAT()
 #Fit BBC input oriented of EAT
 mdl_scores.BBC_input_EAT()
-
 #Fit DDF of EAT
 mdl_scores.DDF_EAT()
+```
+
+<p>In addition, the model of BCC output oriented of FDH and its DDF model are included.</p>
+```python
+#Fit BBC output oriented of FDH
+mdl_scores.BBC_output_FDH()
+#Fit DDF of FDH
+mdl_scores.DDF_FDH()
+```
+<p>Also, this two models are calculated of DEA.</p>
+```python
+#Fit BBC output oriented of DEA
+mdl_scores.BBC_output_DEA()
+#Fit DDF of DEA
+mdl_scores.DDF_DEA()
 ```
 
 <h2>Analysis of the PISA data set</h2>
@@ -147,12 +162,22 @@ graph.view()
 #Adjust and model the efficiency calculations of the EAT
 mdl_scores = eat.Scores(dataset, x, y, model.tree)
 
-#Calculate BBC output oriented EAT
+#Fit BBC output oriented of EAT
 mdl_scores.BBC_output_EAT()
-
-#Calculate BBC input-oriented EAT
+#Fit BBC output oriented of DEAEAT
+mdl_scores.BBC_output_DEAEAT()
+#Fit BBC input oriented of EAT
 mdl_scores.BBC_input_EAT()
-
-#Calculate the FDD of the TAS
+#Fit DDF of EAT
 mdl_scores.DDF_EAT()
+
+#Fit BBC output oriented of FDH
+mdl_scores.BBC_output_FDH()
+#Fit DDF of FDH
+mdl_scores.DDF_FDH()
+
+#Fit BBC output oriented of DEA
+mdl_scores.BBC_output_DEA()
+#Fit DDF of DEA
+mdl_scores.DDF_DEA()
 ```
