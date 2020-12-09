@@ -227,8 +227,8 @@ class Scores:
             self.matrix.loc[i, nameCol] = self._scoreEAT_BBC_output(self.matrix.loc[i, self.x].to_list(),
                                                                     self.matrix.loc[i, self.matrix.columns[self.y]].to_list())
 
-    def BBC_output_DEAEAT(self):
-        nameCol = "BBC_output_DEAEAT"
+    def BBC_output_CEAT(self):
+        nameCol = "BBC_output_CEAT"
         self.matrix.loc[:, nameCol] = 0
 
         for i in range(len(self.matrix)):
