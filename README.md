@@ -94,7 +94,7 @@ data_prediction = model.predict(data_pred, x_p)
 ```
 
 <h2>Efficiency Scores</h2>
-<p>The repository has four ways to calculate the efficiency score of EAT model. The first one is the model BBC output oriented. The second one is the model BBC output oriented of DEAEAT. The third one is the model BBC input oriented. The last one is the model DDF.</p>
+<p>The repository has four ways to calculate the efficiency score of EAT model. The first one is the model BBC output oriented. The second one is the model BBC output oriented of CEAT. The third one is the model BBC input oriented. The last one is the model DDF.</p>
 <p>To do that, the model EAT of scores is carried out.</p>
 
 ```python
@@ -106,8 +106,8 @@ mdl_scores = eat.Scores(dataset, x, y, model.tree)
 ```python
 #Fit BBC output oriented of EAT
 mdl_scores.BBC_output_EAT()
-#Fit BBC output oriented of DEAEAT
-mdl_scores.BBC_output_DEAEAT()
+#Fit BBC output oriented of CEAT
+mdl_scores.BBC_output_CEAT()
 #Fit BBC input oriented of EAT
 mdl_scores.BBC_input_EAT()
 #Fit DDF of EAT
