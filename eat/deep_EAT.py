@@ -10,10 +10,12 @@ class deepEAT:
         'Contructor for EAT tree'
         self.matrix = matrix
         self.N = len(self.matrix)  # Num. rows in dataset
+        self._check_enter_parameters(matrix, x, y, numStop, fold)
+
+        self.x = matrix.columns.get_indexer(x).tolist()  # Index var.ind in matrix
+        self.y = matrix.columns.get_indexer(y).tolist()  # Index var. obj in matrix
         self.nX = len(x)  # Num. var. ind.
         self.nY = len(y)  # Num. var. obj
-        self.y = y
-        self.x = x
 
         self.numStop = numStop
 
