@@ -296,7 +296,9 @@ class deepEAT:
 
             if alpha < alpha_min:
                 alpha_min = alpha
-
+            if alpha < 0:
+                alpha_min = 0
+                
             if alpha_min == 0:
                 break
 
