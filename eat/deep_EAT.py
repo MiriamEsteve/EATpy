@@ -12,6 +12,8 @@ class deepEAT:
         self.N = len(self.matrix)  # Num. rows in dataset
         self.nX = len(x)  # Num. var. ind.
         self.nY = len(y)  # Num. var. obj
+        self.y = y
+        self.x = x
 
         self.numStop = numStop
 
