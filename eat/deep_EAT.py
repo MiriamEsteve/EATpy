@@ -163,7 +163,7 @@ class deepEAT:
     # =============================================================================
     def _estimEAT(self, index, xi, s):
         # Max left
-        maxL = [-1] * self.nY
+        maxL = [-INF] * self.nY
 
         # Divide child's matrix
         left = self.matrix.iloc[index][self.matrix.iloc[index, xi] < s]
@@ -187,7 +187,7 @@ class deepEAT:
             tR["a"][xi] = s
 
             # Left son estimation
-            yInfLeft = [0] * self.nY
+            yInfLeft = [-INF] * self.nY
 
             for i in range(len(self.leaves)):
                 if self._comparePareto(tL, self.tree[self.leaves[i]]) == 1:
