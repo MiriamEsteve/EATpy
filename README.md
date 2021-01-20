@@ -12,7 +12,7 @@ For more info see: https://doi.org/10.1016/j.eswa.2020.113783
 git clone https://github.com/MiriamEsteve/EATpy.git
 ```
 
-<b>Step 2</b>. Place us in the folder created by EATpy, using EATpy cd, and execute the instruction:
+<b>Step 2</b>. Place us in the folder created by EATpy, using "cd EATpy", and execute the instruction:
 ```
 python setup.py install
 ```
