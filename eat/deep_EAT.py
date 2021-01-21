@@ -34,7 +34,7 @@ class deepEAT:
         'Contructor for EAT tree'
         self.matrix = matrix
         self.N = len(self.matrix)  # Num. rows in dataset
-        self._check_enter_parameters(matrix, x, y, numStop)
+        self._checkDeep_enter_parameters(matrix, x, y, numStop)
 
         self.x = matrix.columns.get_indexer(x).tolist()  # Index var.ind in matrix
         self.y = matrix.columns.get_indexer(y).tolist()  # Index var. obj in matrix
@@ -87,7 +87,7 @@ class deepEAT:
             # Build the ALPHA tree list
             self.tree_alpha_list.insert(0, {"alpha": self._alpha(), "score": INF, "tree": copy.deepcopy(self.tree)})
 
-    def _check_enter_parameters(self, matrix, x, y, numStop):
+    def _checkDeep_enter_parameters(self, matrix, x, y, numStop):
         if len(matrix) == 0:
             raise EXIT("ERROR. The dataset must contain data")
         elif len(x) == 0:
