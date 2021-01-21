@@ -88,6 +88,10 @@ class deepEAT:
             self.tree_alpha_list.insert(0, {"alpha": self._alpha(), "score": INF, "tree": copy.deepcopy(self.tree)})
 
     def _checkDeep_enter_parameters(self, matrix, x, y, numStop):
+        #var. x and var. y have been procesed
+        if type(x[0]) == int or type(y[0]) == int:
+            return
+
         if len(matrix) == 0:
             raise EXIT("ERROR. The dataset must contain data")
         elif len(x) == 0:
