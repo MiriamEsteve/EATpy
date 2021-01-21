@@ -60,6 +60,7 @@ class Scores:
                 raise EXIT("ERROR. The names of the inputs are not in the dataset")
 
     def _prepareData(self, matrix, x, y):
+
         pass
     
     def _prepare_a(self, a_y_treeTk, name):
