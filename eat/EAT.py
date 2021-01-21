@@ -30,14 +30,13 @@ class EXIT(Exception):
 
 class EAT(deepEAT):
     def __init__(self, matrix, x, y, numStop, fold):
-        print("fold", fold)
         self.xCol = x
         self.yCol = y
         self._check_enter_parameters(matrix, x, y, numStop, fold)
         print("Prepare data")
         self.x = matrix.columns.get_indexer(x).tolist()  # Index var.ind in matrix
         self.y = matrix.columns.get_indexer(y).tolist()  # Index var. obj in matrix
-        'Contructor for EAT prune tree'
+        'Constructor for EAT prune tree'
         # Herency
         deepEAT.__init__(self, matrix, self.x, self.y, numStop)
         self.fit_deep_EAT()
