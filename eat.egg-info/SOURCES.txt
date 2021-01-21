@@ -1,5 +1,7 @@
+README.md
 setup.py
 eat/EAT.py
+eat/__init__.py
 eat/data.py
 eat/deep_EAT.py
 eat/scores.py

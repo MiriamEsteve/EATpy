@@ -30,6 +30,7 @@ class EXIT(Exception):
 
 class EAT(deepEAT):
     def __init__(self, matrix, x, y, numStop, fold):
+        print("fold", fold)
         self.xCol = x
         self.yCol = y
         self._check_enter_parameters(matrix, x, y, numStop, fold)
