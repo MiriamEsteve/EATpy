@@ -14,7 +14,7 @@ class style():
     WHITE = '\033[37m'
     UNDERLINE = '\033[4m'
     RESET = '\033[0m'
-    
+
 class EXIT(Exception):
     def __init__(self, *args):
         if args:
@@ -59,6 +59,9 @@ class Scores:
             if col not in matrix.columns.tolist():
                 raise EXIT("ERROR. The names of the inputs are not in the dataset")
 
+    def _prepareData(self, matrix, x, y):
+        pass
+    
     def _prepare_a(self, a_y_treeTk, name):
         a = pd.DataFrame.from_records(a_y_treeTk)
         # Rename columns
