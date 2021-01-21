@@ -5,12 +5,36 @@ from graphviz import Digraph
 INF = math.inf
 
 
+class style():
+    BLACK = '\033[30m'
+    RED = '\033[31m'
+    GREEN = '\033[32m'
+    YELLOW = '\033[33m'
+    BLUE = '\033[34m'
+    MAGENTA = '\033[35m'
+    CYAN = '\033[36m'
+    WHITE = '\033[37m'
+    UNDERLINE = '\033[4m'
+    RESET = '\033[0m'
+
+class EXIT(Exception):
+    def __init__(self, *args):
+        if args:
+            self.message = args[0]
+        else:
+            self.message = None
+
+    def __str__(self):
+        if self.message:
+            return style.YELLOW + "\n\n" + self.message + style.RESET
+
+
 class deepEAT:
     def __init__(self, matrix, x, y, numStop):
         'Contructor for EAT tree'
         self.matrix = matrix
         self.N = len(self.matrix)  # Num. rows in dataset
-        self._check_enter_parameters(matrix, x, y, numStop, fold)
+        self._check_enter_parameters(matrix, x, y, numStop)
 
         self.x = matrix.columns.get_indexer(x).tolist()  # Index var.ind in matrix
         self.y = matrix.columns.get_indexer(y).tolist()  # Index var. obj in matrix
@@ -62,6 +86,25 @@ class deepEAT:
 
             # Build the ALPHA tree list
             self.tree_alpha_list.insert(0, {"alpha": self._alpha(), "score": INF, "tree": copy.deepcopy(self.tree)})
+
+    def _check_enter_parameters(self, matrix, x, y, numStop):
+        if len(matrix) == 0:
+            raise EXIT("ERROR. The dataset must contain data")
+        elif len(x) == 0:
+            raise EXIT("ERROR. The inputs of dataset must contain data")
+        elif len(y) == 0:
+            raise EXIT("ERROR. The outputs of dataset must contain data")
+        elif numStop < 1:
+            raise EXIT("ERROR. The numStop must be 1 or higher")
+        else:
+            cols = x + y
+            for col in cols:
+                if col not in matrix.columns.tolist():
+                    raise EXIT("ERROR. The names of the inputs or outputs are not in the dataset")
+
+            for col in x:
+                if col in y:
+                    raise EXIT("ERROR. The names of the inputs and the outputs are overlapping")
 
     # Return source to graphviz
     def export_graphviz(self, graph_title):
