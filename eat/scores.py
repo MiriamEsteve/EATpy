@@ -3,12 +3,35 @@ import math
 INF = math.inf
 from docplex.mp.model import Model
 
+class style():
+    BLACK = '\033[30m'
+    RED = '\033[31m'
+    GREEN = '\033[32m'
+    YELLOW = '\033[33m'
+    BLUE = '\033[34m'
+    MAGENTA = '\033[35m'
+    CYAN = '\033[36m'
+    WHITE = '\033[37m'
+    UNDERLINE = '\033[4m'
+    RESET = '\033[0m'
+    
+class EXIT(Exception):
+    def __init__(self, *args):
+        if args:
+            self.message = args[0]
+        else:
+            self.message = None
+
+    def __str__(self):
+        if self.message:
+            return style.YELLOW + "\n\n" + self.message + style.RESET
+
 
 class Scores:
     def __init__(self, matrix, x, y, tree):
         self.matrix = matrix
         self.N = len(self.matrix)
-        self._check_columnsX_in_data(matrix, x, y)
+        self._check_columnsX_in_data(matrix, x)
 
         self.x = matrix.columns.get_indexer(x).tolist()  # Index var.ind in matrix
         self.y = matrix.columns.get_indexer(y).tolist()  # Index var. obj in matrix
@@ -29,6 +52,12 @@ class Scores:
         del self.atreeTk
         del self.ytreeTk
         del self.N_leaves
+
+    def _check_columnsX_in_data(self, matrix, x):
+        cols = x
+        for col in cols:
+            if col not in matrix.columns.tolist():
+                raise EXIT("ERROR. The names of the inputs are not in the dataset")
 
     def _prepare_a(self, a_y_treeTk, name):
         a = pd.DataFrame.from_records(a_y_treeTk)
@@ -234,7 +263,7 @@ class Scores:
         for i in range(len(self.matrix)):
             # fi_EAT(X = ["x1", "x2"], Y = ["y1", "y2"], tree)
             self.matrix.loc[i, nameCol] = self._scoreDEAEAT_BBC_output(self.matrix.loc[i, self.x].to_list(),
-                                                            self.matrix.loc[i, self.matrix.columns[self.y]].to_list(), self.tree)
+                                                            self.matrix.loc[i, self.matrix.columns[self.y]].to_list())
 
     def BBC_input_EAT(self):
         nameCol = "BBC_input_EAT"
@@ -279,7 +308,7 @@ class Scores:
 
         for i in range(self.nY):
             # Constrain 2.2
-            m.add_constraint(m.sum(self.ymatrix.iloc[i, j] * name_lambda[j] for j in range(self.N)) >= fi[0] * y[i])
+            m.add_constraint(m.sum(self.ytreeTk.iloc[i, j] * name_lambda[j] for j in range(self.N)) >= fi[0] * y[i])
 
         # objetive
         m.maximize(fi[0])
@@ -322,7 +351,7 @@ class Scores:
 
         for i in range(self.nY):
             # Constrain 2.2
-            m.add_constraint(m.sum(self.ymatrix.iloc[i, j] * name_lambda[j] for j in range(self.N)) >= y[i] + beta[0] * y[i])
+            m.add_constraint(m.sum(self.ytreeTk.iloc[i, j] * name_lambda[j] for j in range(self.N)) >= y[i] + beta[0] * y[i])
 
         # objetive
         m.maximize(beta[0])
@@ -382,7 +411,7 @@ class Scores:
 
         for i in range(self.nY):
             # Constrain 2.2
-            m.add_constraint(m.sum(self.ymatrix.iloc[i, j] * name_lambda[j] for j in range(self.N)) >= beta[0] * y[i])
+            m.add_constraint(m.sum(self.ytreeTk.iloc[i, j] * name_lambda[j] for j in range(self.N)) >= beta[0] * y[i])
 
         # objetive
         m.maximize(beta[0])
@@ -425,7 +454,7 @@ class Scores:
             m.add_constraint(cons)
 
         for i in range(self.nY):
-            cons = m.sum(self.ymatrix.iloc[i, j] * name_lambda[j] for j in range(self.N)) - beta[0]*y[i] >= y[i]
+            cons = m.sum(self.ytreeTk.iloc[i, j] * name_lambda[j] for j in range(self.N)) - beta[0]*y[i] >= y[i]
             # Constrain 2.2
             m.add_constraint(cons)
             #print(cons)

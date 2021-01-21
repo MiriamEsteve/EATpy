@@ -225,7 +225,7 @@ class EAT(deepEAT):
             self.td_tree_alpha_list[t]["score"], BestTivsAux = self._RCV(alphaIprim)
 
             if (self.Tk["score"] > self.td_tree_alpha_list[t]["score"]) or (self.BestTivs[0] is None):
-                Tk = self.td_tree_alpha_list[t]  # Tree_alpha with the lowest score
+                self.Tk = self.td_tree_alpha_list[t]  # Tree_alpha with the lowest score
 
                 for v in range(self.fold):
                     self.BestTivs[v] = BestTivsAux[v]
