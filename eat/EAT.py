@@ -33,7 +33,7 @@ class EAT(deepEAT):
         self.xCol = x
         self.yCol = y
         self._check_enter_parameters(matrix, x, y, numStop, fold)
-        print("Prepare data")
+        self.matrix = matrix.loc[:, x + y]  # Order variables
         self.x = matrix.columns.get_indexer(x).tolist()  # Index var.ind in matrix
         self.y = matrix.columns.get_indexer(y).tolist()  # Index var. obj in matrix
         'Constructor for EAT prune tree'

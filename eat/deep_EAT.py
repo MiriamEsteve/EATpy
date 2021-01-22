@@ -32,14 +32,15 @@ class EXIT(Exception):
 class deepEAT:
     def __init__(self, matrix, x, y, numStop):
         'Contructor for EAT tree'
-        self.matrix = matrix
-        self.N = len(self.matrix)  # Num. rows in dataset
         self._checkDeep_enter_parameters(matrix, x, y, numStop)
-
+        self.matrix = matrix.loc[:, x + y] #Order variables
         self.x = matrix.columns.get_indexer(x).tolist()  # Index var.ind in matrix
         self.y = matrix.columns.get_indexer(y).tolist()  # Index var. obj in matrix
+        print("x: ", x, " - y: ", y)
         self.nX = len(x)  # Num. var. ind.
         self.nY = len(y)  # Num. var. obj
+
+        self.N = len(self.matrix)  # Num. rows in dataset
 
         self.numStop = numStop
 
