@@ -35,20 +35,20 @@ data_prediction  #show "p" predictions
 mdl_scores = eat.Scores(dataset, x, y, model.tree)
 
 #Fit BBC output oriented of EAT
-mdl_scores.BBC_output_EAT()
+mdl_scores.BCC_output_EAT()
 #Fit BBC output oriented of DEAEAT
-mdl_scores.BBC_output_DEAEAT()
+mdl_scores.BCC_output_DEAEAT()
 #Fit BBC input oriented of EAT
-mdl_scores.BBC_input_EAT()
+mdl_scores.BCC_input_EAT()
 #Fit DDF of EAT
 mdl_scores.DDF_EAT()
 
 #Fit BBC output oriented of FDH
-mdl_scores.BBC_output_FDH()
+mdl_scores.BCC_output_FDH()
 #Fit DDF of FDH
 mdl_scores.DDF_FDH()
 
 #Fit BBC output oriented of DEA
-mdl_scores.BBC_output_DEA()
+mdl_scores.BCC_output_DEA()
 #Fit DDF of DEA
 mdl_scores.DDF_DEA()
