@@ -146,8 +146,8 @@ class EAT(deepEAT):
         matrix = data.copy()
         self._check_columnsX_in_data(matrix, x)
 
-        if type(data) == list:
-            if len(data) != len(self.xCol):
+        if type(data) == list or type(data) == pd.core.frame.DataFrame:
+            if len(data.columns) != len(self.xCol):
                 raise EXIT("ERROR. The register must be a length of " + str(len(self.xCol)))
             return self._predictor(self.tree, pd.Series(data))
 

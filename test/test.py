@@ -15,13 +15,17 @@ model = eat.EAT(dataset, x, y, numStop, fold)
 #Fit model
 model.fit()
 
+#Create deepModel
+deepModel = eat.deepEAT(dataset, x, y, numStop)
+deepModel.fit_deep_EAT()
+
 #Graph tree
 dot_data = model.export_graphviz('EAT')
 graph = graphviz.Source(dot_data, filename="tree", format="png")
 graph.view()
 
 #Prediction
-x_p = ["x1", "x2"]
+x_p = ["x1"]
 data_pred = dataset.loc[:10, x_p]  #without y, if you want it
 data_prediction = model.predict(data_pred, x_p)
 data_prediction  #show "p" predictions

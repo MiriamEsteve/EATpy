@@ -92,7 +92,6 @@ class deepEAT:
             self.matrix = matrix.loc[:, x + y]  # Order variables
             self.x = matrix.columns.get_indexer(x).tolist()  # Index var.ind in matrix
             self.y = matrix.columns.get_indexer(y).tolist()  # Index var. obj in matrix
-            print("x: ", x, " - y: ", y)
 
         if len(matrix) == 0:
             raise EXIT("ERROR. The dataset must contain data")
