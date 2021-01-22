@@ -29,7 +29,7 @@ class EXIT(Exception):
 
 class Scores:
     def __init__(self, matrix, x, y, tree):
-        self.matrix = matrix
+        self.matrix = matrix.loc[:, x + y]  # Order variables
         self.N = len(self.matrix)
         self._check_columnsX_in_data(matrix, x)
 
@@ -257,8 +257,8 @@ class Scores:
         self.matrix.loc[:, nameCol] = 0
 
         for i in range(len(self.matrix)):
-            self.matrix.loc[i, nameCol] = self._scoreEAT_BBC_output(self.matrix.loc[i, self.x].to_list(),
-                                                                    self.matrix.loc[i, self.matrix.columns[self.y]].to_list())
+            self.matrix.loc[i, nameCol] = self._scoreEAT_BBC_output(self.matrix.iloc[i, self.x].to_list(),
+                                                                    self.matrix.iloc[i, self.matrix.columns[self.y]].to_list())
 
     def BBC_output_CEAT(self):
         nameCol = "BBC_output_CEAT"
@@ -266,29 +266,29 @@ class Scores:
 
         for i in range(len(self.matrix)):
             # fi_EAT(X = ["x1", "x2"], Y = ["y1", "y2"], tree)
-            self.matrix.loc[i, nameCol] = self._scoreDEAEAT_BBC_output(self.matrix.loc[i, self.x].to_list(),
-                                                            self.matrix.loc[i, self.matrix.columns[self.y]].to_list())
+            self.matrix.loc[i, nameCol] = self._scoreDEAEAT_BBC_output(self.matrix.iloc[i, self.x].to_list(),
+                                                            self.matrix.iloc[i, self.matrix.columns[self.y]].to_list())
 
     def BBC_input_EAT(self):
         nameCol = "BBC_input_EAT"
         self.matrix.loc[:, nameCol] = 0
 
         for i in range(len(self.matrix)):
-            self.matrix.loc[i, nameCol] = self._scoreEAT_BBC_input(self.matrix.loc[i, self.x].to_list(),
-                                                                   self.matrix.loc[i, self.matrix.columns[self.y]].to_list())
+            self.matrix.loc[i, nameCol] = self._scoreEAT_BBC_input(self.matrix.iloc[i, self.x].to_list(),
+                                                                   self.matrix.iloc[i, self.matrix.columns[self.y]].to_list())
 
     def DDF_EAT(self):
         nameCol = "DDF_EAT"
         self.matrix.loc[:, nameCol] = 0
 
         for i in range(len(self.matrix)):
-            self.matrix.loc[i, nameCol] = self._scoreEAT_DDF(self.matrix.loc[i, self.x].to_list(),
-                                                             self.matrix.loc[i, self.matrix.columns[self.y]].to_list())
+            self.matrix.loc[i, nameCol] = self._scoreEAT_DDF(self.matrix.iloc[i, self.x].to_list(),
+                                                             self.matrix.iloc[i, self.matrix.columns[self.y]].to_list())
 
     #FDH
     def _scoreFDH_BBC_output(self, x, y):
         # Prepare matrix
-        self.atreeTk = self.matrix[self.x]  # xmatrix
+        self.atreeTk = self.matrix.iloc[:, self.x]  # xmatrix
         self.ytreeTk = self.matrix.iloc[:, self.y]  # ymatrix
 
         self._prepare_model()
@@ -331,7 +331,7 @@ class Scores:
 
     def _score_DDF_FDH(self, x, y):
         # Prepare matrix
-        self.atreeTk = self.matrix[self.x]  # xmatrix
+        self.atreeTk = self.matrix.iloc[:, self.x]  # xmatrix
         self.ytreeTk = self.matrix.iloc[:, self.y]  # ymatrix
 
         self._prepare_model()
@@ -377,21 +377,21 @@ class Scores:
         self.matrix.loc[:, nameCol] = 0
 
         for i in range(len(self.matrix)):
-            self.matrix.loc[i, nameCol] = self._scoreFDH_BBC_output(self.matrix.loc[i, self.x].to_list(),
-                                                         self.matrix.loc[i, self.matrix.columns[self.y]].to_list())
+            self.matrix.loc[i, nameCol] = self._scoreFDH_BBC_output(self.matrix.iloc[i, self.x].to_list(),
+                                                         self.matrix.iloc[i, self.matrix.columns[self.y]].to_list())
 
     def DDF_FDH(self):
         nameCol = "DDF_FDH"
         self.matrix.loc[:, nameCol] = 0
 
         for i in range(len(self.matrix)):
-            self.matrix.loc[i, nameCol] = self._score_DDF_FDH(self.matrix.loc[i, self.x].to_list(),
-                                                   self.matrix.loc[i, self.matrix.columns[self.y]].to_list())
+            self.matrix.loc[i, nameCol] = self._score_DDF_FDH(self.matrix.iloc[i, self.x].to_list(),
+                                                   self.matrix.iloc[i, self.matrix.columns[self.y]].to_list())
 
     #DEA
     def _scoreDEA_BBC_output(self, x, y):
         # Prepare matrix
-        self.atreeTk = self.matrix[self.x]  # xmatrix
+        self.atreeTk = self.matrix.iloc[:, self.x]  # xmatrix
         self.ytreeTk = self.matrix.iloc[:, self.y]  # ymatrix
 
         self._prepare_model()
@@ -434,7 +434,7 @@ class Scores:
 
     def _score_DDF_DEA(self, x, y):
         # Prepare matrix
-        self.atreeTk = self.matrix[self.x]  # xmatrix
+        self.atreeTk = self.matrix.iloc[:, self.x]  # xmatrix
         self.ytreeTk = self.matrix.iloc[:, self.y]  # ymatrix
 
         self._prepare_model()
@@ -482,13 +482,13 @@ class Scores:
         self.matrix.loc[:, nameCol] = 0
 
         for i in range(len(self.matrix)):
-            self.matrix.loc[i, nameCol] = self._scoreDEA_BBC_output(self.matrix.loc[i, self.x].to_list(),
-                                                                    self.matrix.loc[i, self.matrix.columns[self.y]].to_list())
+            self.matrix.loc[i, nameCol] = self._scoreDEA_BBC_output(self.matrix.iloc[i, self.x].to_list(),
+                                                                    self.matrix.iloc[i, self.matrix.columns[self.y]].to_list())
 
     def DDF_DEA(self):
         nameCol = "DDF_DEA"
         self.matrix.loc[:, nameCol] = 0
 
         for i in range(len(self.matrix)):
-            self.matrix.loc[i, nameCol] = self._score_DDF_DEA(self.matrix.loc[i, self.x].to_list(),
-                                                   self.matrix.loc[i, self.matrix.columns[self.y]].to_list())
+            self.matrix.loc[i, nameCol] = self._score_DDF_DEA(self.matrix.iloc[i, self.x].to_list(),
+                                                   self.matrix.iloc[i, self.matrix.columns[self.y]].to_list())
