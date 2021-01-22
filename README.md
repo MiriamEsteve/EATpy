@@ -94,7 +94,7 @@ data_prediction = model.predict(data_pred, x_p)
 ```
 
 <h2>Efficiency Scores</h2>
-<p>The repository has four ways to calculate the efficiency score of EAT model. The first one is the model BBC output oriented. The second one is the model BBC output oriented of CEAT. The third one is the model BBC input oriented. The last one is the model DDF.</p>
+<p>The repository has four ways to calculate the efficiency score of EAT model. The first one is the model BCC output oriented. The second one is the model BCC output oriented of CEAT. The third one is the model BBC input oriented. The last one is the model DDF.</p>
 <p>To do that, the model EAT of scores is carried out.</p>
 
 ```python
@@ -104,12 +104,12 @@ mdl_scores = eat.Scores(dataset, x, y, model.tree)
 <p>Then, the four models exposed before are called.</p>
 
 ```python
-#Fit BBC output oriented of EAT
-mdl_scores.BBC_output_EAT()
-#Fit BBC output oriented of CEAT
-mdl_scores.BBC_output_CEAT()
-#Fit BBC input oriented of EAT
-mdl_scores.BBC_input_EAT()
+#Fit BCC output oriented of EAT
+mdl_scores.BCC_output_EAT()
+#Fit BCC output oriented of CEAT
+mdl_scores.BCC_output_CEAT()
+#Fit BCC input oriented of EAT
+mdl_scores.BCC_input_EAT()
 #Fit DDF of EAT
 mdl_scores.DDF_EAT()
 ```
@@ -117,8 +117,8 @@ mdl_scores.DDF_EAT()
 <p>In addition, the model of BCC output oriented of FDH and its DDF model are included.</p>
 
 ```python
-#Fit BBC output oriented of FDH
-mdl_scores.BBC_output_FDH()
+#Fit BCC output oriented of FDH
+mdl_scores.BCC_output_FDH()
 #Fit DDF of FDH
 mdl_scores.DDF_FDH()
 ```
@@ -126,8 +126,8 @@ mdl_scores.DDF_FDH()
 <p>Also, this two models are calculated of DEA.</p>
 
 ```python
-#Fit BBC output oriented of DEA
-mdl_scores.BBC_output_DEA()
+#Fit BCC output oriented of DEA
+mdl_scores.BCC_output_DEA()
 #Fit DDF of DEA
 mdl_scores.DDF_DEA()
 ```
@@ -165,22 +165,22 @@ graph.view()
 #Adjust and model the efficiency calculations of the EAT
 mdl_scores = eat.Scores(dataset, x, y, model.tree)
 
-#Fit BBC output oriented of EAT
-mdl_scores.BBC_output_EAT()
-#Fit BBC output oriented of DEAEAT
-mdl_scores.BBC_output_DEAEAT()
-#Fit BBC input oriented of EAT
-mdl_scores.BBC_input_EAT()
+#Fit BCC output oriented of EAT
+mdl_scores.BCC_output_EAT()
+#Fit BCC output oriented of DEAEAT
+mdl_scores.BCC_output_DEAEAT()
+#Fit BCC input oriented of EAT
+mdl_scores.BCC_input_EAT()
 #Fit DDF of EAT
 mdl_scores.DDF_EAT()
 
-#Fit BBC output oriented of FDH
-mdl_scores.BBC_output_FDH()
+#Fit BCC output oriented of FDH
+mdl_scores.BCC_output_FDH()
 #Fit DDF of FDH
 mdl_scores.DDF_FDH()
 
-#Fit BBC output oriented of DEA
-mdl_scores.BBC_output_DEA()
+#Fit BCC output oriented of DEA
+mdl_scores.BCC_output_DEA()
 #Fit DDF of DEA
 mdl_scores.DDF_DEA()
 ```
