@@ -143,21 +143,23 @@ class EAT(deepEAT):
     # Predictor.
     # =============================================================================
     def predict(self, data, x):
-        matrix = data.copy()
-        self._check_columnsX_in_data(matrix, x)
-
-        if type(data) == list or type(data) == pd.core.frame.DataFrame:
-            if len(data.columns) != len(self.xCol):
-                raise EXIT("ERROR. The register must be a length of " + str(len(self.xCol)))
+        if type(data) == list:
             return self._predictor(self.tree, pd.Series(data))
+
+        data = pd.DataFrame(data)
+        #Check if columns X are in data
+        self._check_columnsX_in_data(data, x)
+        #Check length columns X
+        if len(data.loc[0, x]) != len(self.xCol):
+            raise EXIT("ERROR. The register must be a length of " + str(len(self.xCol)))
 
         x = data.columns.get_indexer(x).tolist()  # Index var.ind in matrix
 
-        for i in range(len(matrix)):
+        for i in range(len(data)):
             pred = self._predictor(self.tree, data.iloc[i, x])
             for j in range(len(self.yCol)):
-                matrix.loc[i, "p_" + self.yCol[j]] = pred[j]
-        return matrix
+                data.loc[i, "p_" + self.yCol[j]] = pred[j]
+        return data
 
     def _predictor(self, tree, register):
         ti = 0  # Root node
