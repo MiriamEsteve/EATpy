@@ -94,17 +94,10 @@ class Scores:
         self.ytreeTk = self._prepare_col_names(self._prepare_a(self.ytreeTk, "y"), self.N_leaves, "t")
 
     def _prepare_model_DEA_FDH(self):
-        # Prepare tree
-        treeTk = pd.DataFrame(self.tree)
-        self.atreeTk = list(treeTk[treeTk["SL"] == -1]["a"])
-        self.ytreeTk = list(treeTk[treeTk["SL"] == -1]["y"])
-
-        self.N_leaves = len(self.atreeTk)
-
         # a prepare
-        self.atreeTk = self._prepare_col_names(self._prepare_a(self.atreeTk, "a"), self.N_leaves, "t")
+        self.atreeTk = self._prepare_col_names(self._prepare_a(self.atreeTk, "a"), self.N, "t")
         # y prepare
-        self.ytreeTk = self._prepare_col_names(self._prepare_a(self.ytreeTk, "y"), self.N_leaves, "t")
+        self.ytreeTk = self._prepare_col_names(self._prepare_a(self.ytreeTk, "y"), self.N, "t")
 
 
     def _scoreEAT_BCC_output(self, xn, yn):
@@ -290,7 +283,7 @@ class Scores:
         self.atreeTk = self.matrix.iloc[:, self.x]  # xmatrix
         self.ytreeTk = self.matrix.iloc[:, self.y]  # ymatrix
 
-        self._prepare_model()
+        self._prepare_model_DEA_FDH()
 
         # create one model instance, with a name
         m = Model(name='fi_FDH')
@@ -333,7 +326,7 @@ class Scores:
         self.atreeTk = self.matrix.iloc[:, self.x]  # xmatrix
         self.ytreeTk = self.matrix.iloc[:, self.y]  # ymatrix
 
-        self._prepare_model()
+        self._prepare_model_DEA_FDH()
 
         # create one model instance, with a name
         m = Model(name='beta_FDH')
@@ -393,7 +386,7 @@ class Scores:
         self.atreeTk = self.matrix.iloc[:, self.x]  # xmatrix
         self.ytreeTk = self.matrix.iloc[:, self.y]  # ymatrix
 
-        self._prepare_model()
+        self._prepare_model_DEA_FDH()
 
         # create one model instance, with a name
         m = Model(name='beta_DEA')
@@ -436,7 +429,7 @@ class Scores:
         self.atreeTk = self.matrix.iloc[:, self.x]  # xmatrix
         self.ytreeTk = self.matrix.iloc[:, self.y]  # ymatrix
 
-        self._prepare_model()
+        self._prepare_model_DEA_FDH()
 
         # create one model instance, with a name
         m = Model(name='beta_DEA_DDF')
@@ -481,7 +474,6 @@ class Scores:
         self.matrix.loc[:, nameCol] = 0
 
         for i in range(len(self.matrix)):
-            print("y: ", self.matrix.iloc[i, self.y].to_list())
             self.matrix.loc[i, nameCol] = self._scoreDEA_BCC_output(self.matrix.iloc[i, self.x].to_list(),
                                                                     self.matrix.iloc[i, self.y].to_list())
 
