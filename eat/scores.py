@@ -35,7 +35,6 @@ class Scores:
 
         self.x = matrix.columns.get_indexer(x).tolist()  # Index var.ind in matrix
         self.y = matrix.columns.get_indexer(y).tolist()  # Index var. obj in matrix
-        print("Ini --> x: ", self.x, " - y: ", self.y)
         self.nX = len(self.x)
         self.nY = len(self.y)
 
@@ -108,7 +107,7 @@ class Scores:
         self.ytreeTk = self._prepare_col_names(self._prepare_a(self.ytreeTk, "y"), self.N_leaves, "t")
 
 
-    def _scoreEAT_BBC_output(self, xn, yn):
+    def _scoreEAT_BCC_output(self, xn, yn):
         self._prepare_model()
 
         # create one model instance, with a name
@@ -143,7 +142,7 @@ class Scores:
             sol = m.solution.objective_value
         return sol
 
-    def _scoreDEAEAT_BBC_output(self, x, y):
+    def _scoreDEAEAT_BCC_output(self, x, y):
         self._prepare_model()
 
         # create one model instance, with a name
@@ -182,7 +181,7 @@ class Scores:
             sol = m.solution.objective_value
         return sol
 
-    def _scoreEAT_BBC_input(self, xn, yn):
+    def _scoreEAT_BCC_input(self, xn, yn):
         self._prepare_model()
 
         # create one model instance, with a name
@@ -252,30 +251,29 @@ class Scores:
         return sol
 
 
-    def BBC_output_EAT(self):
-        nameCol = "BBC_output_EAT"
+    def BCC_output_EAT(self):
+        nameCol = "BCC_output_EAT"
         self.matrix.loc[:, nameCol] = 0
-        print("BBC -> x: ", self.x, " - y: ", self.y)
 
         for i in range(len(self.matrix)):
-            self.matrix.loc[i, nameCol] = self._scoreEAT_BBC_output(self.matrix.iloc[i, self.x].to_list(),
+            self.matrix.loc[i, nameCol] = self._scoreEAT_BCC_output(self.matrix.iloc[i, self.x].to_list(),
                                                                     self.matrix.iloc[i, self.y].to_list())
 
-    def BBC_output_CEAT(self):
-        nameCol = "BBC_output_CEAT"
+    def BCC_output_CEAT(self):
+        nameCol = "BCC_output_CEAT"
         self.matrix.loc[:, nameCol] = 0
 
         for i in range(len(self.matrix)):
             # fi_EAT(X = ["x1", "x2"], Y = ["y1", "y2"], tree)
-            self.matrix.loc[i, nameCol] = self._scoreDEAEAT_BBC_output(self.matrix.iloc[i, self.x].to_list(),
+            self.matrix.loc[i, nameCol] = self._scoreDEAEAT_BCC_output(self.matrix.iloc[i, self.x].to_list(),
                                                             self.matrix.iloc[i, self.y].to_list())
 
-    def BBC_input_EAT(self):
-        nameCol = "BBC_input_EAT"
+    def BCC_input_EAT(self):
+        nameCol = "BCC_input_EAT"
         self.matrix.loc[:, nameCol] = 0
 
         for i in range(len(self.matrix)):
-            self.matrix.loc[i, nameCol] = self._scoreEAT_BBC_input(self.matrix.iloc[i, self.x].to_list(),
+            self.matrix.loc[i, nameCol] = self._scoreEAT_BCC_input(self.matrix.iloc[i, self.x].to_list(),
                                                                    self.matrix.iloc[i, self.y].to_list())
 
     def DDF_EAT(self):
@@ -287,7 +285,7 @@ class Scores:
                                                              self.matrix.iloc[i, self.y].to_list())
 
     #FDH
-    def _scoreFDH_BBC_output(self, x, y):
+    def _scoreFDH_BCC_output(self, x, y):
         # Prepare matrix
         self.atreeTk = self.matrix.iloc[:, self.x]  # xmatrix
         self.ytreeTk = self.matrix.iloc[:, self.y]  # ymatrix
@@ -373,12 +371,12 @@ class Scores:
             sol = m.solution.objective_value
         return sol
 
-    def BBC_output_FDH(self):
-        nameCol = "BBC_output_FDH"
+    def BCC_output_FDH(self):
+        nameCol = "BCC_output_FDH"
         self.matrix.loc[:, nameCol] = 0
 
         for i in range(len(self.matrix)):
-            self.matrix.loc[i, nameCol] = self._scoreFDH_BBC_output(self.matrix.iloc[i, self.x].to_list(),
+            self.matrix.loc[i, nameCol] = self._scoreFDH_BCC_output(self.matrix.iloc[i, self.x].to_list(),
                                                          self.matrix.iloc[i, self.y].to_list())
 
     def DDF_FDH(self):
@@ -390,7 +388,7 @@ class Scores:
                                                    self.matrix.iloc[i, self.y].to_list())
 
     #DEA
-    def _scoreDEA_BBC_output(self, x, y):
+    def _scoreDEA_BCC_output(self, x, y):
         # Prepare matrix
         self.atreeTk = self.matrix.iloc[:, self.x]  # xmatrix
         self.ytreeTk = self.matrix.iloc[:, self.y]  # ymatrix
@@ -478,12 +476,13 @@ class Scores:
             sol = m.solution.objective_value
         return sol
 
-    def BBC_output_DEA(self):
-        nameCol = "BBC_output_DEA"
+    def BCC_output_DEA(self):
+        nameCol = "BCC_output_DEA"
         self.matrix.loc[:, nameCol] = 0
 
         for i in range(len(self.matrix)):
-            self.matrix.loc[i, nameCol] = self._scoreDEA_BBC_output(self.matrix.iloc[i, self.x].to_list(),
+            print("y: ", self.matrix.iloc[i, self.y].to_list())
+            self.matrix.loc[i, nameCol] = self._scoreDEA_BCC_output(self.matrix.iloc[i, self.x].to_list(),
                                                                     self.matrix.iloc[i, self.y].to_list())
 
     def DDF_DEA(self):
