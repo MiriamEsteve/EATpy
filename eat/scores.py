@@ -35,7 +35,7 @@ class Scores:
 
         self.x = matrix.columns.get_indexer(x).tolist()  # Index var.ind in matrix
         self.y = matrix.columns.get_indexer(y).tolist()  # Index var. obj in matrix
-
+        print("Ini --> x: ", self.x, " - y: ", self.y)
         self.nX = len(self.x)
         self.nY = len(self.y)
 
@@ -255,10 +255,11 @@ class Scores:
     def BBC_output_EAT(self):
         nameCol = "BBC_output_EAT"
         self.matrix.loc[:, nameCol] = 0
+        print("BBC -> x: ", self.x, " - y: ", self.y)
 
         for i in range(len(self.matrix)):
             self.matrix.loc[i, nameCol] = self._scoreEAT_BBC_output(self.matrix.iloc[i, self.x].to_list(),
-                                                                    self.matrix.iloc[i, self.matrix.columns[self.y]].to_list())
+                                                                    self.matrix.iloc[i, self.y].to_list())
 
     def BBC_output_CEAT(self):
         nameCol = "BBC_output_CEAT"
@@ -267,7 +268,7 @@ class Scores:
         for i in range(len(self.matrix)):
             # fi_EAT(X = ["x1", "x2"], Y = ["y1", "y2"], tree)
             self.matrix.loc[i, nameCol] = self._scoreDEAEAT_BBC_output(self.matrix.iloc[i, self.x].to_list(),
-                                                            self.matrix.iloc[i, self.matrix.columns[self.y]].to_list())
+                                                            self.matrix.iloc[i, self.y].to_list())
 
     def BBC_input_EAT(self):
         nameCol = "BBC_input_EAT"
@@ -275,7 +276,7 @@ class Scores:
 
         for i in range(len(self.matrix)):
             self.matrix.loc[i, nameCol] = self._scoreEAT_BBC_input(self.matrix.iloc[i, self.x].to_list(),
-                                                                   self.matrix.iloc[i, self.matrix.columns[self.y]].to_list())
+                                                                   self.matrix.iloc[i, self.y].to_list())
 
     def DDF_EAT(self):
         nameCol = "DDF_EAT"
@@ -283,7 +284,7 @@ class Scores:
 
         for i in range(len(self.matrix)):
             self.matrix.loc[i, nameCol] = self._scoreEAT_DDF(self.matrix.iloc[i, self.x].to_list(),
-                                                             self.matrix.iloc[i, self.matrix.columns[self.y]].to_list())
+                                                             self.matrix.iloc[i, self.y].to_list())
 
     #FDH
     def _scoreFDH_BBC_output(self, x, y):
@@ -378,7 +379,7 @@ class Scores:
 
         for i in range(len(self.matrix)):
             self.matrix.loc[i, nameCol] = self._scoreFDH_BBC_output(self.matrix.iloc[i, self.x].to_list(),
-                                                         self.matrix.iloc[i, self.matrix.columns[self.y]].to_list())
+                                                         self.matrix.iloc[i, self.y].to_list())
 
     def DDF_FDH(self):
         nameCol = "DDF_FDH"
@@ -386,7 +387,7 @@ class Scores:
 
         for i in range(len(self.matrix)):
             self.matrix.loc[i, nameCol] = self._score_DDF_FDH(self.matrix.iloc[i, self.x].to_list(),
-                                                   self.matrix.iloc[i, self.matrix.columns[self.y]].to_list())
+                                                   self.matrix.iloc[i, self.y].to_list())
 
     #DEA
     def _scoreDEA_BBC_output(self, x, y):
@@ -483,7 +484,7 @@ class Scores:
 
         for i in range(len(self.matrix)):
             self.matrix.loc[i, nameCol] = self._scoreDEA_BBC_output(self.matrix.iloc[i, self.x].to_list(),
-                                                                    self.matrix.iloc[i, self.matrix.columns[self.y]].to_list())
+                                                                    self.matrix.iloc[i, self.y].to_list())
 
     def DDF_DEA(self):
         nameCol = "DDF_DEA"
@@ -491,4 +492,4 @@ class Scores:
 
         for i in range(len(self.matrix)):
             self.matrix.loc[i, nameCol] = self._score_DDF_DEA(self.matrix.iloc[i, self.x].to_list(),
-                                                   self.matrix.iloc[i, self.matrix.columns[self.y]].to_list())
+                                                   self.matrix.iloc[i, self.y].to_list())
