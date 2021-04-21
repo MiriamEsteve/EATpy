@@ -135,9 +135,11 @@ class EAT(deepEAT):
 
         for v in range(self.fold):
             # Test
-            self.Lv[v] = self.matrix.sample(n=numRowsFold).reset_index(drop=True)
+            self.Lv[v] = self.Sample.sample(n=numRowsFold)
             # Training
-            self.notLv[v] = self.matrix.drop(list(self.Lv[v].index)).reset_index(drop=True)
+            self.notLv[v] = self.Sample.drop(list(self.Lv[v].index)).reset_index(drop=True)
+
+            self.Lv[v] = self.Lv[v].reset_index(drop=True)
 
     # =============================================================================
     # Predictor.
